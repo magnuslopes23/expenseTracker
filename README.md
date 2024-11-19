@@ -10,3 +10,5 @@ Connecting node to mongodb compass : https://medium.com/@sohaibkhan.sk100/heres-
 mongoose operations : https://medium.com/@tomorchandraroy884/how-to-connect-mongodb-with-node-js-using-mongoose-a0c772dfb1ca
 
 init frontend with react : https://create-react-app.dev/docs/getting-started/
+
+using styled component for layout and styling : https://dev.to/elijahtrillionz/complete-guide-on-how-to-use-styled-components-in-react-360c
