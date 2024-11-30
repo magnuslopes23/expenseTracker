@@ -43,6 +43,7 @@ import Sidebar from './components/Sidebar';
 import HomePage from './pages/HomePage';
 import AddIncomePage from './pages/AddIncomePage';
 import AddExpensePage from './pages/AddExpensePage';
+import ViewTransactions from './pages/ViewTransactions';
 import './styles/App.css';
 
 const App = () => {
@@ -55,6 +56,7 @@ const App = () => {
             <Route path="/" element={<HomePage />} />
             <Route path="/add-income" element={<AddIncomePage />} />
             <Route path="/add-expense" element={<AddExpensePage />} />
+            <Route path="/view-transactions" element={<ViewTransactions />} />
           </Routes>
         </div>
       </div>
