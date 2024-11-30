@@ -1,0 +1,82 @@
+/* Recent History Container */
+.recent-history {
+    width: 100%;
+    background-color: white; /* Match the overall card background */
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Single card shadow */
+  }
+  
+  /* Title Styling */
+  .recent-history-title {
+    font-size: 18px;
+    font-weight: bold;
+    color: #2c3e50;
+    margin-bottom: 20px;
+  }
+  
+  /* List Styling */
+  .recent-history-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+  
+  /* Item Styling */
+  .recent-history-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 15px;
+    border-radius: 8px;
+    margin-bottom: 10px;
+    background-color: #f9f9f9; /* Slightly lighter background */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05); /* Light shadow for depth */
+  }
+  
+  /* Hover Effect */
+  .recent-history-item:hover {
+    background-color: #eef2f5; /* Slight hover effect */
+  }
+  
+  /* Description Styling */
+  .recent-history-description {
+    font-size: 14px;
+    font-weight: bold;
+    color: #2c3e50;
+  }
+  
+  /* Amount Styling */
+  .recent-history-amount {
+    font-size: 14px;
+    font-weight: bold;
+  }
+  
+  .recent-history-amount.positive {
+    color: green;
+  }
+  
+  .recent-history-amount.negative {
+    color: red;
+  }
+  
+  /* View More Button */
+.view-more-button {
+    display: block;
+    width: 100%;
+    margin-top: 15px;
+    padding: 10px;
+    font-size: 14px;
+    font-weight: bold;
+    color: white;
+    background-color: #2c3e50;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }
+  
+  .view-more-button:hover {
+    background-color: #1abc9c;
+  }
+  
