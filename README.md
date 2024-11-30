@@ -12,3 +12,9 @@ mongoose operations : https://medium.com/@tomorchandraroy884/how-to-connect-mong
 init frontend with react : https://create-react-app.dev/docs/getting-started/
 
 using styled component for layout and styling : https://dev.to/elijahtrillionz/complete-guide-on-how-to-use-styled-components-in-react-360c
+
+hooks in react : https://medium.com/@AbidKazmi/all-react-hooks-in-one-short-4b0ed4b5a6e4
+
+getting windowsize using hooks: https://medium.com/@josephat94/building-a-simple-react-hook-to-detect-screen-size-404a867fa2d2
+
+Router in react : https://luqmanshaban.medium.com/react-router-a-step-by-step-guide-4c5ec964d2e9
