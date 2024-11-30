@@ -18,3 +18,5 @@ hooks in react : https://medium.com/@AbidKazmi/all-react-hooks-in-one-short-4b0e
 getting windowsize using hooks: https://medium.com/@josephat94/building-a-simple-react-hook-to-detect-screen-size-404a867fa2d2
 
 Router in react : https://luqmanshaban.medium.com/react-router-a-step-by-step-guide-4c5ec964d2e9
+
+Using Chartjs 2 : https://codesandbox.io/p/sandbox/react-chartjs-2-line-chart-example-5z3ss?file=%2Fsrc%2FApp.js
