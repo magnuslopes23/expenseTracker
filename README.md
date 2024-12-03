@@ -20,3 +20,5 @@ getting windowsize using hooks: https://medium.com/@josephat94/building-a-simple
 Router in react : https://luqmanshaban.medium.com/react-router-a-step-by-step-guide-4c5ec964d2e9
 
 Using Chartjs 2 : https://codesandbox.io/p/sandbox/react-chartjs-2-line-chart-example-5z3ss?file=%2Fsrc%2FApp.js
+
+Using Icons : https://docs.fontawesome.com/web/use-with/react/add-icons
