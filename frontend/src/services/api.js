@@ -4,8 +4,11 @@ const API = axios.create({ baseURL: 'http://localhost:5000/api/v1' });
 
 // Income APIs
 export const getIncomes = () => API.get('/get-incomes');
-export const addIncome = (data) => API.post('/income/add', data);
+export const addIncome = (data) => API.post('/add-income', data);
+export const deleteIncome = (id) => API.delete(`/delete-income/${id}`);
 
 // Expense APIs
-export const getExpenses = () => API.get('/get-incomes');
-export const addExpense = (data) => API.post('/expense/add', data);
+export const getExpenses = () => API.get('/get-expenses');
+export const addExpense = (data) => API.post('/add-expense', data);
+export const deleteExpense = (id) => API.delete(`/delete-expense/${id}`);
+

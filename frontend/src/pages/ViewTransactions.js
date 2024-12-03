@@ -1,11 +1,28 @@
-import React, { useState, useEffect } from 'react';
-import { getIncomes, getExpenses } from '../services/api';
-import '../styles/ViewTransactions.css';
+import React, { useState, useEffect } from "react";
+import { getIncomes, getExpenses } from "../services/api";
+import { deleteIncome, deleteExpense } from "../services/api";
+import "../styles/ViewTransactions.css";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faTrashAlt, faCalendarAlt, faCommentAlt, faWallet, faTags} from "@fortawesome/free-solid-svg-icons";
 
 const ViewTransactions = () => {
   const [transactions, setTransactions] = useState([]);
   const [loading, setLoading] = useState(true);
-  const [error, setError] = useState('');
+  const [error, setError] = useState("");
+
+  const handleDelete = async (id, type) => {
+    try {
+      if (type === "income") {
+        await deleteIncome(id);
+      } else if (type === "expense") {
+        await deleteExpense(id);
+      }
+      setTransactions((prev) => prev.filter((tx) => tx._id !== id));
+      alert("Transaction deleted successfully!");
+    } catch (err) {
+      alert("Error deleting transaction");
+    }
+  };
 
   useEffect(() => {
     const fetchTransactions = async () => {
@@ -23,7 +40,9 @@ const ViewTransactions = () => {
         ];
 
         // Sort by date (newest first)
-        combinedTransactions.sort((a, b) => new Date(b.date) - new Date(a.date));
+        combinedTransactions.sort(
+          (a, b) => new Date(b.date) - new Date(a.date)
+        );
 
         setTransactions(combinedTransactions);
         setLoading(false);
@@ -45,18 +64,35 @@ const ViewTransactions = () => {
       <ul className="transactions-list">
         {transactions.map((tx) => (
           <li key={tx._id} className="transaction-item">
-            <div className="transaction-info">
-              <span className="transaction-title">{tx.title}</span>
-              <span className="transaction-date">{new Date(tx.date).toLocaleDateString()}</span>
-              <span className={`transaction-type ${tx.type}`}>{tx.type}</span>
+            <div className="transaction-icon">
+              <FontAwesomeIcon icon={faWallet} className={`icon-${tx.type}`} />
             </div>
-            <span
-              className={`transaction-amount ${
-                tx.type === 'income' ? 'positive' : 'negative'
-              }`}
-            >
+            <div className="transaction-details">
+              <h3 className="transaction-title">{tx.title}</h3>
+              <div className="transaction-meta">
+                <span>
+                  <FontAwesomeIcon icon={faCalendarAlt} /> {new Date(tx.date).toLocaleDateString()}
+                </span>
+                <span>
+                  <FontAwesomeIcon icon={faTags} /> {tx.category}
+                </span>
+                <span>
+                  <FontAwesomeIcon icon={faCommentAlt} /> {tx.description}
+                </span>
+                <span>
+                  <strong>Type:</strong> {tx.type.charAt(0).toUpperCase() + tx.type.slice(1)}
+                </span>
+              </div>
+            </div>
+            <div className={`transaction-amount ${tx.type}`}>
               {tx.type === 'income' ? `+${tx.amount}` : `-${tx.amount}`}
-            </span>
+            </div>
+            <button
+              onClick={() => handleDelete(tx._id, tx.type)}
+              className="delete-button"
+            >
+              <FontAwesomeIcon icon={faTrashAlt} />
+            </button>
           </li>
         ))}
       </ul>

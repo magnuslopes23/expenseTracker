@@ -4,7 +4,7 @@
   border-radius: 10px;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
   margin: 20px auto;
-  max-width: 800px;
+  max-width: 900px; /* Adjusted width to fit additional details */
 }
 
 .view-transactions h2 {
@@ -22,9 +22,8 @@
 
 .transaction-item {
   display: flex;
-  justify-content: space-between;
   align-items: center;
-  padding: 10px 15px;
+  padding: 15px;
   border-bottom: 1px solid #f0f0f0;
 }
 
@@ -32,37 +31,85 @@
   border-bottom: none;
 }
 
-.transaction-info {
+.transaction-icon {
+  width: 50px;
+  height: 50px;
   display: flex;
-  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  background-color: #f4f4f4;
+  margin-right: 15px;
+}
+
+.icon-income {
+  color: green;
+}
+
+.icon-expense {
+  color: red;
+}
+
+.transaction-details {
+  flex-grow: 1;
 }
 
 .transaction-title {
   font-size: 16px;
   font-weight: bold;
   color: #2c3e50;
+  margin-bottom: 5px;
 }
 
-.transaction-date {
-  font-size: 12px;
+.transaction-meta {
+  font-size: 14px;
   color: #7f8c8d;
+  display: flex;
+  flex-wrap: wrap; /* Wrap long details onto the next line */
+  gap: 15px;
+}
+
+.transaction-meta span {
+  display: flex;
+  align-items: center;
+  gap: 5px; /* Space between icon and text */
 }
 
 .transaction-amount {
   font-size: 16px;
   font-weight: bold;
+  color: #2c3e50;
+  margin-left: 15px;
 }
 
-.transaction-amount.positive {
+.transaction-amount.income {
   color: green;
 }
 
-.transaction-amount.negative {
+.transaction-amount.expense {
   color: red;
 }
 
-.error {
+.delete-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border: 2px solid red;
+  background-color: white;
   color: red;
-  font-weight: bold;
-  text-align: center;
+  border-radius: 8px; /* Rounded corners */
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
+  margin-left: 15px;
+}
+
+.delete-button:hover {
+  background-color: red;
+  color: white;
+}
+
+.delete-button svg {
+  font-size: 16px;
 }
