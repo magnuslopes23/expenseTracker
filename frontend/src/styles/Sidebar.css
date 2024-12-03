@@ -1,55 +1,79 @@
 .sidebar {
-    width: 220px;
-    background-color: #2c3e50;
-    color: white;
-    height: 100vh;
-    padding: 20px;
-    box-sizing: border-box;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-  }
-  
-  .sidebar .profile {
-    text-align: center;
-    margin-bottom: 30px;
-  }
-  
-  .sidebar .profile img {
-    width: 70px;
-    height: 70px;
-    border-radius: 50%;
-    margin-bottom: 10px;
-  }
-  
-  .sidebar h3 {
-    font-size: 18px;
-    margin: 5px 0;
-  }
-  
-  .sidebar p {
-    font-size: 14px;
-    color: #bdc3c7;
-  }
-  
-  .sidebar ul {
-    list-style: none;
-    padding: 0;
-    width: 100%;
-  }
-  
-  .sidebar ul li {
-    padding: 12px;
-    cursor: pointer;
-    margin-bottom: 10px;
-    background-color: #34495e;
-    border-radius: 5px;
-    text-align: center;
-    font-size: 14px;
-    transition: background-color 0.3s;
-  }
-  
-  .sidebar ul li:hover {
-    background-color: #1abc9c;
-  }
-  
+  width: 220px;
+  background-color: #2c3e50;
+  color: white;
+  height: 100vh;
+  padding: 20px;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.profile {
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.profile img {
+  width: 70px;
+  height: 70px;
+  border-radius: 50%;
+  margin-bottom: 10px;
+}
+
+.profile h3 {
+  font-size: 18px;
+  margin: 5px 0;
+}
+
+.profile p {
+  font-size: 14px;
+  color: #bdc3c7;
+}
+
+.sidebar-menu {
+  list-style: none;
+  padding: 0;
+  width: 100%;
+}
+
+.sidebar-menu li {
+  margin-bottom: 15px; /* Increased spacing for a cleaner look */
+}
+
+/* Sidebar Menu Links */
+.sidebar-menu li a {
+  display: flex;
+  align-items: center; /* Vertically align icon and text */
+  gap: 15px; /* Increased space between icon and text */
+  color: white;
+  text-decoration: none;
+  font-size: 16px; /* Slightly larger font for readability */
+  background-color: #34495e;
+  padding: 12px 15px;
+  border-radius: 8px;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+.sidebar-menu li a:hover {
+  background-color: #16a085;
+  color: #ecf0f1;
+}
+
+.sidebar-menu li a.active {
+  background-color: #1abc9c;
+  font-weight: bold;
+  color: white;
+}
+
+/* Icon Styling */
+.menu-icon {
+  font-size: 18px; /* Larger icon size for better visibility */
+}
+
+/* Centering Sidebar Content */
+.sidebar-menu li a span {
+  flex: 1; /* Ensures text is evenly spaced with the icon */
+  text-align: left; /* Aligns the text to the left of its container */
+}

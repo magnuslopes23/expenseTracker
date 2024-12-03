@@ -22,3 +22,5 @@ Router in react : https://luqmanshaban.medium.com/react-router-a-step-by-step-gu
 Using Chartjs 2 : https://codesandbox.io/p/sandbox/react-chartjs-2-line-chart-example-5z3ss?file=%2Fsrc%2FApp.js
 
 Using Icons : https://docs.fontawesome.com/web/use-with/react/add-icons
+
+Axios for Api : https://www.freecodecamp.org/news/how-to-use-axios-with-react/

@@ -1,35 +1,61 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
+import { getIncomes, getExpenses } from '../services/api';
 import '../styles/ViewTransactions.css';
 
 const ViewTransactions = () => {
-  // Sample transaction data (you can replace this with an API call)
-  const transactions = [
-    { description: 'Dentist Appointment', amount: -120, date: '2023-11-01' },
-    { description: 'Travelling', amount: -3000, date: '2023-11-02' },
-    { description: 'From Freelance', amount: 1300, date: '2023-11-03' },
-    { description: 'Shopping', amount: -450, date: '2023-11-04' },
-    { description: 'Salary', amount: 5000, date: '2023-11-05' },
-    { description: 'Electricity Bill', amount: -300, date: '2023-11-06' },
-    { description: 'Gym Membership', amount: -100, date: '2023-11-07' },
-    { description: 'Bonus', amount: 2000, date: '2023-11-08' },
-  ];
+  const [transactions, setTransactions] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState('');
+
+  useEffect(() => {
+    const fetchTransactions = async () => {
+      try {
+        // Fetch both incomes and expenses concurrently
+        const [incomeResponse, expenseResponse] = await Promise.all([
+          getIncomes(),
+          getExpenses(),
+        ]);
+
+        // Combine incomes and expenses into one list
+        const combinedTransactions = [
+          ...incomeResponse.data.map((item) => ({ ...item, type: 'income' })),
+          ...expenseResponse.data.map((item) => ({ ...item, type: 'expense' })),
+        ];
+
+        // Sort by date (newest first)
+        combinedTransactions.sort((a, b) => new Date(b.date) - new Date(a.date));
+
+        setTransactions(combinedTransactions);
+        setLoading(false);
+      } catch (err) {
+        setError('Error fetching transactions');
+        setLoading(false);
+      }
+    };
+
+    fetchTransactions();
+  }, []);
 
   return (
     <div className="view-transactions">
-      <h2 className="view-transactions-title">All Transactions</h2>
+      <h2>All Transactions</h2>
+      {loading && <p>Loading...</p>}
+      {error && <p className="error">{error}</p>}
+      {!loading && transactions.length === 0 && <p>No transactions found.</p>}
       <ul className="transactions-list">
-        {transactions.map((tx, index) => (
-          <li key={index} className="transaction-item">
+        {transactions.map((tx) => (
+          <li key={tx._id} className="transaction-item">
             <div className="transaction-info">
-              <span className="transaction-description">{tx.description}</span>
-              <span className="transaction-date">{tx.date}</span>
+              <span className="transaction-title">{tx.title}</span>
+              <span className="transaction-date">{new Date(tx.date).toLocaleDateString()}</span>
+              <span className={`transaction-type ${tx.type}`}>{tx.type}</span>
             </div>
             <span
               className={`transaction-amount ${
-                tx.amount > 0 ? 'positive' : 'negative'
+                tx.type === 'income' ? 'positive' : 'negative'
               }`}
             >
-              {tx.amount > 0 ? `+${tx.amount}` : tx.amount}
+              {tx.type === 'income' ? `+${tx.amount}` : `-${tx.amount}`}
             </span>
           </li>
         ))}
