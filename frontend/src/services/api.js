@@ -12,3 +12,8 @@ export const getExpenses = () => API.get('/get-expenses');
 export const addExpense = (data) => API.post('/add-expense', data);
 export const deleteExpense = (id) => API.delete(`/delete-expense/${id}`);
 
+
+export const deleteTransaction = (id, type) => {
+    const endpoint = type === 'income' ? 'delete-income' : 'delete-expense';
+    return API.delete(`/${endpoint}/${id}`);
+  };
