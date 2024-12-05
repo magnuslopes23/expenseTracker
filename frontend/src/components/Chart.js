@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { Line } from 'react-chartjs-2';
 import {
   Chart as ChartJS,
@@ -9,30 +9,87 @@ import {
   Tooltip,
   Legend,
 } from 'chart.js';
+import { getIncomes, getExpenses } from '../services/api'; // Assuming API functions are available
 
 // Register necessary components
 ChartJS.register(LineElement, PointElement, LinearScale, CategoryScale, Tooltip, Legend);
 
 const Chart = () => {
-  const data = {
-    labels: ['25/02/2023', '21/02/2023', '18/01/2023', '26/01/2023'],
+  const [chartData, setChartData] = useState({
+    labels: [],
     datasets: [
       {
         label: 'Income',
-        data: [1000, 8000, 2000, 7000],
+        data: [],
         borderColor: 'green',
         backgroundColor: 'rgba(0, 128, 0, 0.2)',
         fill: true,
       },
       {
         label: 'Expenses',
-        data: [500, 3000, 1000, 2000],
+        data: [],
         borderColor: 'red',
         backgroundColor: 'rgba(255, 0, 0, 0.2)',
         fill: true,
       },
     ],
-  };
+  });
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const incomeResponse = await getIncomes();
+        const expenseResponse = await getExpenses();
+
+        const incomes = incomeResponse.data.map((item) => ({
+          date: new Date(item.date).toLocaleDateString(),
+          amount: item.amount,
+        }));
+
+        const expenses = expenseResponse.data.map((item) => ({
+          date: new Date(item.date).toLocaleDateString(),
+          amount: item.amount,
+        }));
+
+        // Combine all dates and remove duplicates
+        const uniqueDates = Array.from(
+          new Set([...incomes.map((i) => i.date), ...expenses.map((e) => e.date)])
+        );
+
+        // Prepare data for the chart
+        const incomeData = uniqueDates.map((date) =>
+          incomes.find((i) => i.date === date)?.amount || 0
+        );
+        const expenseData = uniqueDates.map((date) =>
+          expenses.find((e) => e.date === date)?.amount || 0
+        );
+
+        setChartData({
+          labels: uniqueDates,
+          datasets: [
+            {
+              label: 'Income',
+              data: incomeData,
+              borderColor: 'green',
+              backgroundColor: 'rgba(0, 128, 0, 0.2)',
+              fill: true,
+            },
+            {
+              label: 'Expenses',
+              data: expenseData,
+              borderColor: 'red',
+              backgroundColor: 'rgba(255, 0, 0, 0.2)',
+              fill: true,
+            },
+          ],
+        });
+      } catch (error) {
+        console.error('Error fetching chart data:', error);
+      }
+    };
+
+    fetchData();
+  }, []);
 
   const options = {
     responsive: true,
@@ -65,7 +122,7 @@ const Chart = () => {
 
   return (
     <div className="chart-container">
-      <Line data={data} options={options} />
+      <Line data={chartData} options={options} />
     </div>
   );
 };
