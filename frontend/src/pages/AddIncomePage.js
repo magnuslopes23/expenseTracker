@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { addIncome } from "../services/api";
+import { addIncome, updateIncome } from "../services/api"; // Ensure `updateIncome` is available in your API file
 import ViewTransactions from "../components/ViewTransactions";
 import "../styles/AddIncomePage.css";
 
@@ -11,31 +11,27 @@ const AddIncomePage = () => {
     description: "",
     date: "",
   });
-
   const [message, setMessage] = useState("");
+  const [isEditing, setIsEditing] = useState(false); // Track if we are editing
+  const [editingId, setEditingId] = useState(null); // Store the ID of the transaction being edited
+  const [refreshTransactions, setRefreshTransactions] = useState(false);
 
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
-  // const handleSubmit = async (e) => {
-  //   e.preventDefault();
-
-  //   if (!formData.title || !formData.amount || !formData.category || !formData.description || !formData.date) {
-  //     setMessage('All fields are required');
-  //     return;
-  //   }
-
-  //   try {
-  //     await addIncome(formData);
-  //     setMessage('Income added successfully!');
-  //     setFormData({ title: '', amount: '', category: '', description: '', date: '' });
-  //   } catch (error) {
-  //     setMessage('Error adding income. Please try again.');
-  //   }
-  // };
-
-  const [refreshTransactions, setRefreshTransactions] = useState(false); // New state for refreshing transactions
+  const handleTransactionClick = (transaction) => {
+    // Populate the form with the clicked transaction data
+    setIsEditing(true);
+    setEditingId(transaction._id);
+    setFormData({
+      title: transaction.title,
+      amount: transaction.amount,
+      category: transaction.category,
+      description: transaction.description,
+      date: new Date(transaction.date).toISOString().split("T")[0],
+    });
+  };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -52,8 +48,22 @@ const AddIncomePage = () => {
     }
 
     try {
-      await addIncome(formData);
-      setMessage("Income added successfully!");
+      if (isEditing) {
+        // Update existing transaction
+        console.log("isediting")
+        console.log("Income Data for Update:", formData);
+        await updateIncome(editingId, {
+          ...formData,
+          amount: Number(formData.amount), // Ensure amount is a number
+        });
+        setMessage("Income updated successfully!");
+        setIsEditing(false);
+        setEditingId(null);
+      } else {
+        // Add new transaction
+        await addIncome(formData);
+        setMessage("Income added successfully!");
+      }
       setFormData({
         title: "",
         amount: "",
@@ -61,9 +71,9 @@ const AddIncomePage = () => {
         description: "",
         date: "",
       });
-      setRefreshTransactions((prev) => !prev); // Toggle refresh state
+      setRefreshTransactions((prev) => !prev); // Refresh transactions
     } catch (error) {
-      setMessage("Error adding income. Please try again.");
+      setMessage("Error submitting income. Please try again.");
     }
   };
 
@@ -71,7 +81,7 @@ const AddIncomePage = () => {
     <div className="add-income-page">
       {/* Form Section */}
       <div className="form-section">
-        <h2>Add Income</h2>
+        <h2>{isEditing ? "Edit Income" : "Add Income"}</h2>
         {message && <p className="message">{message}</p>}
         <form onSubmit={handleSubmit} className="transaction-form">
           <div className="form-group">
@@ -124,14 +134,18 @@ const AddIncomePage = () => {
             ></textarea>
           </div>
           <button type="submit" className="add-transaction-button">
-            + Add Income
+            {isEditing ? "Update Income" : "+ Add Income"}
           </button>
         </form>
       </div>
 
       {/* Transactions Section */}
       <div className="transactions-section">
-        <ViewTransactions type="income" refresh={refreshTransactions} />
+        <ViewTransactions
+          type="income"
+          refresh={refreshTransactions}
+          onTransactionClick={handleTransactionClick}
+        />
       </div>
     </div>
   );

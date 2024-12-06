@@ -9,7 +9,7 @@ import {
 } from '@fortawesome/free-solid-svg-icons';
 import '../styles/ViewTransactions.css';
 
-const ViewTransactions = ({ type = 'all', refresh }) => {
+const ViewTransactions = ({ type = 'all', refresh, onTransactionClick }) => {
   const [transactions, setTransactions] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState('');
@@ -50,6 +50,12 @@ const ViewTransactions = ({ type = 'all', refresh }) => {
     fetchTransactions();
   }, [type, refresh]);
 
+  const handleTransactionClick = (transaction) => {
+    if (onTransactionClick) {
+      onTransactionClick(transaction);
+    }
+  };
+
   const handleDelete = async (id, transactionType) => {
     try {
       await deleteTransaction(id, transactionType);
@@ -71,7 +77,7 @@ const ViewTransactions = ({ type = 'all', refresh }) => {
       {!loading && transactions.length === 0 && <p>No transactions found.</p>}
       <ul className="transactions-list">
   {transactions.map((tx) => (
-    <li key={tx._id} className="transaction-item">
+    <li key={tx._id} className="transaction-item" onClick={() => handleTransactionClick(tx)}>
       <button
         onClick={() => handleDelete(tx._id, tx.type)}
         className="delete-button"

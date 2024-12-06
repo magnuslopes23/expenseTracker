@@ -17,3 +17,12 @@ export const deleteTransaction = (id, type) => {
     const endpoint = type === 'income' ? 'delete-income' : 'delete-expense';
     return API.delete(`/${endpoint}/${id}`);
   };
+
+
+export const updateIncome = async (id, incomeData) => {
+  const response = await API.put(`/update-income/${id}`, incomeData);
+  console.log(response)
+  return response.data; // Axios automatically parses the response data
+};
+
+  
