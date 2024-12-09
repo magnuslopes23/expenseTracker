@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { addExpense } from "../services/api";
 import ViewTransactions from "../components/ViewTransactions";
-import "../styles/AddIncomePage.css"; // Using the same CSS as AddIncomePage
+import "../styles/AddIncomePage.css"; 
 
 const AddExpensePage = () => {
   const [formData, setFormData] = useState({
@@ -43,7 +43,7 @@ const AddExpensePage = () => {
         description: "",
         date: "",
       });
-      setRefreshTransactions((prev) => !prev); // Toggle refresh state
+      setRefreshTransactions((prev) => !prev); 
     } catch (error) {
       setMessage("Error adding expense. Please try again.");
     }

@@ -1,12 +1,12 @@
 import React from 'react';
-import '../styles/RecentHistory.css'; // Updated CSS
-import { useNavigate } from 'react-router-dom'; // Use for navigation
+import '../styles/RecentHistory.css'; 
+import { useNavigate } from 'react-router-dom';
 
 
 const RecentHistory = () => {
   const navigate = useNavigate();
 
-  // Sample transactions (you can replace this with props or API data)
+  
   const transactions = [
     { description: 'Dentist Appointment', amount: -120 },
     { description: 'Travelling', amount: -3000 },
@@ -18,7 +18,7 @@ const RecentHistory = () => {
     { description: 'Bonus', amount: 2000 },
   ];
 
-  // Get the most recent 6 transactions
+  
   const recentTransactions = transactions.slice(0, 5);
 
   return (

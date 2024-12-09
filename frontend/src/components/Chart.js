@@ -9,9 +9,9 @@ import {
   Tooltip,
   Legend,
 } from 'chart.js';
-import { getIncomes, getExpenses } from '../services/api'; // Assuming API functions are available
+import { getIncomes, getExpenses } from '../services/api'; 
 
-// Register necessary components
+
 ChartJS.register(LineElement, PointElement, LinearScale, CategoryScale, Tooltip, Legend);
 
 const Chart = () => {
@@ -51,12 +51,12 @@ const Chart = () => {
           amount: item.amount,
         }));
 
-        // Combine all dates and remove duplicates
+        
         const uniqueDates = Array.from(
           new Set([...incomes.map((i) => i.date), ...expenses.map((e) => e.date)])
         );
 
-        // Prepare data for the chart
+        
         const incomeData = uniqueDates.map((date) =>
           incomes.find((i) => i.date === date)?.amount || 0
         );

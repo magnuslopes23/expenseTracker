@@ -2,7 +2,7 @@ import React from 'react';
 import Chart from '../components/Chart';
 import Summary from '../components/Summary';
 import RecentHistory from '../components/RecentHistory';
-import '../styles/HomePage.css'; // Ensure styling is applied
+import '../styles/HomePage.css'; 
 
 
 const HomePage = () => {

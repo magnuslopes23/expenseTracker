@@ -8,19 +8,19 @@
   }
   
   .form-section {
-    flex: 0.42; /* 40% width */
+    flex: 0.42;
     background-color: white;
     border-radius: 10px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     padding: 20px;
     max-height: calc(100vh - 60px); /* Avoid scrolling */
-    overflow-y: auto; /* Enable scrolling for the form only if needed */
+    overflow-y: auto; 
   }
   
   .transaction-form {
     display: flex;
     flex-direction: column;
-    gap: 15px; /* Add spacing between form groups */
+    gap: 15px; 
   }
   
   .form-group label {
@@ -38,7 +38,7 @@
   
   .transaction-form textarea {
     resize: none;
-    height: 80px; /* Adjusted for smaller height */
+    height: 80px; 
   }
   
   .add-transaction-button {
@@ -56,12 +56,12 @@
   }
   
   .transactions-section {
-    flex: 0.6; /* 60% width */
+    flex: 0.6; 
     background-color: white;
     border-radius: 10px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     padding: 20px;
-    overflow-y: auto; /* Ensure transactions section can scroll if content overflows */
+    overflow-y: auto; 
   }
   
   .transactions-section h2 {

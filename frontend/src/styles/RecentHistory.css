@@ -1,13 +1,12 @@
-/* Recent History Container */
+
 .recent-history {
     width: 100%;
-    background-color: white; /* Match the overall card background */
+    background-color: white; 
     padding: 20px;
     border-radius: 10px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Single card shadow */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
   }
-  
-  /* Title Styling */
+
   .recent-history-title {
     font-size: 18px;
     font-weight: bold;
@@ -15,14 +14,14 @@
     margin-bottom: 20px;
   }
   
-  /* List Styling */
+
   .recent-history-list {
     list-style: none;
     padding: 0;
     margin: 0;
   }
   
-  /* Item Styling */
+
   .recent-history-item {
     display: flex;
     justify-content: space-between;
@@ -30,23 +29,23 @@
     padding: 10px 15px;
     border-radius: 8px;
     margin-bottom: 10px;
-    background-color: #f9f9f9; /* Slightly lighter background */
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05); /* Light shadow for depth */
+    background-color: #f9f9f9; 
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05); 
   }
   
-  /* Hover Effect */
+  
   .recent-history-item:hover {
-    background-color: #eef2f5; /* Slight hover effect */
+    background-color: #eef2f5; 
   }
   
-  /* Description Styling */
+
   .recent-history-description {
     font-size: 14px;
     font-weight: bold;
     color: #2c3e50;
   }
   
-  /* Amount Styling */
+
   .recent-history-amount {
     font-size: 14px;
     font-weight: bold;
@@ -60,7 +59,7 @@
     color: red;
   }
   
-  /* View More Button */
+
 .view-more-button {
     display: block;
     width: 100%;

@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { addIncome, updateIncome } from "../services/api"; // Ensure `updateIncome` is available in your API file
+import { addIncome, updateIncome } from "../services/api"; 
 import ViewTransactions from "../components/ViewTransactions";
 import "../styles/AddIncomePage.css";
 
@@ -12,8 +12,8 @@ const AddIncomePage = () => {
     date: "",
   });
   const [message, setMessage] = useState("");
-  const [isEditing, setIsEditing] = useState(false); // Track if we are editing
-  const [editingId, setEditingId] = useState(null); // Store the ID of the transaction being edited
+  const [isEditing, setIsEditing] = useState(false); 
+  const [editingId, setEditingId] = useState(null); 
   const [refreshTransactions, setRefreshTransactions] = useState(false);
 
   const handleChange = (e) => {
@@ -21,7 +21,7 @@ const AddIncomePage = () => {
   };
 
   const handleTransactionClick = (transaction) => {
-    // Populate the form with the clicked transaction data
+
     setIsEditing(true);
     setEditingId(transaction._id);
     setFormData({
@@ -49,18 +49,18 @@ const AddIncomePage = () => {
 
     try {
       if (isEditing) {
-        // Update existing transaction
+        
         console.log("isediting")
         console.log("Income Data for Update:", formData);
         await updateIncome(editingId, {
           ...formData,
-          amount: Number(formData.amount), // Ensure amount is a number
+          amount: Number(formData.amount), 
         });
         setMessage("Income updated successfully!");
         setIsEditing(false);
         setEditingId(null);
       } else {
-        // Add new transaction
+        
         await addIncome(formData);
         setMessage("Income added successfully!");
       }
@@ -71,7 +71,7 @@ const AddIncomePage = () => {
         description: "",
         date: "",
       });
-      setRefreshTransactions((prev) => !prev); // Refresh transactions
+      setRefreshTransactions((prev) => !prev); 
     } catch (error) {
       setMessage("Error submitting income. Please try again.");
     }

@@ -7,10 +7,10 @@
     margin-bottom: 20px;
   }
   
-  /* Align chart and recent history side by side */
+  
   .dashboard-grid {
     display: grid;
-    grid-template-columns: 2fr 1fr; /* Chart takes 2 parts, history 1 part */
+    grid-template-columns: 2fr 1fr; 
     gap: 20px;
   }
   

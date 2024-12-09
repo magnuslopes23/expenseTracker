@@ -39,17 +39,17 @@
 }
 
 .sidebar-menu li {
-  margin-bottom: 15px; /* Increased spacing for a cleaner look */
+  margin-bottom: 15px; 
 }
 
 /* Sidebar Menu Links */
 .sidebar-menu li a {
   display: flex;
-  align-items: center; /* Vertically align icon and text */
-  gap: 15px; /* Increased space between icon and text */
+  align-items: center; 
+  gap: 15px; 
   color: white;
   text-decoration: none;
-  font-size: 16px; /* Slightly larger font for readability */
+  font-size: 16px; 
   background-color: #34495e;
   padding: 12px 15px;
   border-radius: 8px;
@@ -67,13 +67,11 @@
   color: white;
 }
 
-/* Icon Styling */
 .menu-icon {
-  font-size: 18px; /* Larger icon size for better visibility */
+  font-size: 18px; 
 }
 
-/* Centering Sidebar Content */
 .sidebar-menu li a span {
-  flex: 1; /* Ensures text is evenly spaced with the icon */
-  text-align: left; /* Aligns the text to the left of its container */
+  flex: 1;
+  text-align: left; 
 }
