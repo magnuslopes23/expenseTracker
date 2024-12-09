@@ -45,3 +45,37 @@ exports.deleteExpense = async (req, res) => {
   }
 };
 
+
+exports.updateExpense = async (req, res) => {
+
+  const { id } = req.params;
+  const { title, amount, category, description, date } = req.body;
+
+  try {
+    console.log(1);
+    if (!title || !amount || !category || !description || !date) {
+      return res.status(400).json({ message: "All fields are required" });
+    }
+    console.log(2);
+    
+    
+    if (amount <= 0 || typeof amount !== "number") {
+      return res.status(400).json({ message: "Amount must be a positive number" });
+    }
+    console.log(3);
+    const updatedExpense = await ExpenseSchema.findByIdAndUpdate(
+      id,
+      { title, amount, category, description, date },
+      { new: true } // Return the updated document
+    );
+    console.log(updatedExpense);
+    console.log(4);
+    if (!updatedExpense) {
+      return res.status(404).json({ message: "Income not found" });
+    }
+
+    res.status(200).json({ message: "Income Updated", updatedExpense });
+  } catch (error) {
+    res.status(500).json({ message: "Server Error" });
+  }
+};

@@ -54,24 +54,19 @@ exports.updateIncome = async (req, res) => {
   const { title, amount, category, description, date } = req.body;
 
   try {
-    console.log(1);
     if (!title || !amount || !category || !description || !date) {
       return res.status(400).json({ message: "All fields are required" });
     }
-    console.log(2);
     
     
     if (amount <= 0 || typeof amount !== "number") {
       return res.status(400).json({ message: "Amount must be a positive number" });
     }
-    console.log(3);
     const updatedIncome = await IncomeSchema.findByIdAndUpdate(
       id,
       { title, amount, category, description, date },
-      { new: true } // Return the updated document
+      { new: true } 
     );
-    console.log(updatedIncome);
-    console.log(4);
     if (!updatedIncome) {
       return res.status(404).json({ message: "Income not found" });
     }
