@@ -1,7 +1,7 @@
 import React from 'react';
-import Chart from '../components/Chart';
-import Summary from '../components/Summary';
-import RecentHistory from '../components/RecentHistory';
+import Chart from '../components/Chart.js';
+import Summary from '../components/Summary.js';
+import RecentHistory from '../components/RecentHistory.js';
 import '../styles/HomePage.css'; 
 
 

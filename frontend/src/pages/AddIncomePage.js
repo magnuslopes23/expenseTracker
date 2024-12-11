@@ -1,6 +1,6 @@
 import React, { useState } from "react";
-import { addIncome, updateIncome } from "../services/api"; 
-import ViewTransactions from "../components/ViewTransactions";
+import { addIncome, updateIncome } from "../services/api.js"; 
+import ViewTransactions from "../components/ViewTransactions.js";
 import "../styles/AddIncomePage.css";
 
 const AddIncomePage = () => {

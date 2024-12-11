@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { getIncomes, getExpenses, deleteTransaction } from '../services/api';
+import { getIncomes, getExpenses, deleteTransaction } from '../services/api.js';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
   faCalendarAlt,

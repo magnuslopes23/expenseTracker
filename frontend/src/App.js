@@ -1,10 +1,10 @@
 import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import Sidebar from './components/Sidebar';
-import HomePage from './pages/HomePage';
-import AddIncomePage from './pages/AddIncomePage';
-import AddExpensePage from './pages/AddExpensePage';
-import ViewTransactionsPage from './pages/ViewTransactionsPage';
+import Sidebar from './components/Sidebar.js';
+import HomePage from './pages/HomePage.js';
+import AddIncomePage from './pages/AddIncomePage.js';
+import AddExpensePage from './pages/AddExpensePage.js';
+import ViewTransactionsPage from './pages/ViewTransactionsPage.js';
 import './styles/App.css';
 
 const App = () => {

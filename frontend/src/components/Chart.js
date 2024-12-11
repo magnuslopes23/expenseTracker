@@ -9,7 +9,7 @@ import {
   Tooltip,
   Legend,
 } from 'chart.js';
-import { getIncomes, getExpenses } from '../services/api'; 
+import { getIncomes, getExpenses } from '../services/api.js'; 
 
 
 ChartJS.register(LineElement, PointElement, LinearScale, CategoryScale, Tooltip, Legend);
