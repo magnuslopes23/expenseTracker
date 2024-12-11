@@ -1,0 +1,30 @@
+version: '3.8'
+services:
+  frontend:
+    build:
+      context: ./frontend
+    ports:
+      - "3000:3000"
+    depends_on:
+      - backend
+
+  backend:
+    build:
+      context: ./backend
+    ports:
+      - "5000:5000"
+    depends_on:
+      - mongo
+    environment:
+      - NODE_ENV=production
+      - DATABASE_URL=mongodb+srv://maggi:maggi@cluster0.j7tzi.mongodb.net/ExpenseTracker?retryWrites=true&w=majority
+
+  mongo:
+    image: mongo:5
+    ports:
+      - "27017:27017"
+    volumes:
+      - mongo-data:/data/db
+
+volumes:
+  mongo-data:
