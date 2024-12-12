@@ -7,7 +7,13 @@ require('dotenv').config();
 const app = express();
 
 app.use(express.json());
-app.use(cors());
+// app.use(cors());
+
+// const cors = require('cors');
+app.use(cors({
+  origin: 'http://34.245.123.95/:3000'
+}));
+
 
 readdirSync('./routes').map((route) =>
   app.use('/api/v1', require('./routes/' + route))
