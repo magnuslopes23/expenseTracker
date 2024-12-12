@@ -1,4 +1,4 @@
-- name: Configure and deploy Docker container
+- name: Configure and deploy Docker containers
   hosts: all
   become: yes
   tasks:
@@ -24,14 +24,10 @@
         dest: /home/ec2-user/expense-tracker
         version: main
 
-    - name: Build the Docker image
-      command: docker build -t expense_tracker /home/ec2-user/expense-tracker
+    - name: Build and start Docker containers using Docker Compose
+      command: docker-compose up -d
       args:
         chdir: /home/ec2-user/expense-tracker
 
-    - name: Run the Docker container
-      command: docker run -d --name expense_tracker_container -p 80:5000 expense_tracker
-      ignore_errors: yes
-
-    - name: Ensure Docker container restarts on reboot
-      command: docker update --restart always expense_tracker_container
+    - name: Ensure Docker containers restart on reboot
+      command: docker update --restart always expense_tracker_backend_1 expense_tracker_frontend_1
