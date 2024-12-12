@@ -56,6 +56,6 @@ jobs:
           username: ec2-user
           key: ${{ secrets.EC2_SSH_KEY }}
           script: |
-            docker pull ${{ secrets.DOCKER_USERNAME }}/expense-tracker-backend:latest
-            docker pull ${{ secrets.DOCKER_USERNAME }}/expense-tracker-frontend:latest
+            docker pull ${{ secrets.DOCKER_USERNAME }}/expense-tracker-backend_1:latest
+            docker pull ${{ secrets.DOCKER_USERNAME }}/expense-tracker-frontend_1:latest
             docker-compose up -d
