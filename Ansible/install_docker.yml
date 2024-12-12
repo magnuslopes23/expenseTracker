@@ -29,5 +29,5 @@
       args:
         chdir: /home/ec2-user/expense-tracker
 
-    - name: Ensure Docker containers restart on reboot
-      command: docker update --restart always expense_tracker_backend_1 expense_tracker_frontend_1
+    # - name: Ensure Docker containers restart on reboot
+    #   command: docker update --restart always expense_tracker_backend_1 expense_tracker_frontend_1

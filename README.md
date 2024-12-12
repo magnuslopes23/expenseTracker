@@ -32,3 +32,5 @@ Unit testing using Jest :
     https://www.freecodecamp.org/news/how-to-write-unit-tests-in-react/
 
 using hooks to establish connection to db for testing : https://vaskort.medium.com/how-to-unit-test-your-custom-react-hook-with-react-testing-library-and-jest-8bdefafdc8a2
+
+deployment and ci-cd: https://github.com/magnuslopes23/Networking_ca1
