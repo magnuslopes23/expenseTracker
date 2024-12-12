@@ -59,4 +59,4 @@ jobs:
             cd expense-tracker/
             docker pull ${{ secrets.DOCKER_USERNAME }}/expense-tracker-backend:latest
             docker pull ${{ secrets.DOCKER_USERNAME }}/expense-tracker-frontend:latest
-            docker-compose up -d
+            sudo docker-compose up -d
